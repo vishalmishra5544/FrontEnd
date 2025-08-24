@@ -1,11 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basics</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Vishal Mishra" />
+    <meta name="description" content="HTML Basics Reference with Examples" />
+    <meta name="keywords" content="html,css,javascript,basics,reference,tags" />
+    <title>Basics of HTML — Full Tag Reference</title>
+    <style>
+      :root { --bg:#0f172a; --panel:#0b1220; --card:#0e1729; --ink:#e5e7eb; --muted:#9ca3af; --accent:#38bdf8; --code:#f3f4f6; }
+      *{box-sizing:border-box}
+      body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;background:#0a0f1e;color:var(--ink)}
+      header,footer{background:var(--bg);padding:1rem 1.25rem;border-bottom:1px solid #1f2937}
+      header h1{margin:.25rem 0 0 0;font-size:1.25rem}
+      nav{max-width:1100px;margin:.5rem auto 0;display:flex;gap:.75rem;flex-wrap:wrap}
+      nav a{padding:.35rem .6rem;border:1px solid #1f2937;border-radius:999px;text-decoration:none;color:var(--ink)}
+      nav a:hover{border-color:var(--accent);color:var(--accent)}
+      main{max-width:1100px;margin:0 auto;padding:1.5rem}
+      section{background:var(--panel);border:1px solid #1f2937;border-radius:12px;padding:1rem 1.25rem;margin:1rem 0}
+      h2{margin:0 0 .25rem 0}
+      p.lead{color:var(--muted);margin:0 0 .75rem}
+      details{background:var(--card);border:1px solid #1f2937;border-radius:10px;margin:.75rem 0}
+      details>summary{cursor:pointer;padding:.6rem .85rem;border-radius:10px;list-style:none}
+      details[open]>summary{border-bottom:1px solid #1f2937;border-bottom-left-radius:0;border-bottom-right-radius:0}
+      ul.taglist{margin:0;padding:.5rem .85rem .85rem 1.25rem}
+      li.tag{margin:.6rem 0}
+      .name{font-weight:700;color:#fff}
+      .desc{display:block;color:var(--muted)}
+      pre{margin:.5rem 0 0;background:var(--code);color:#111;padding:.5rem .75rem;border-radius:8px;overflow:auto}
+      code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em}
+      footer{border-top:1px solid #1f2937;border-bottom:none;color:var(--muted);text-align:center}
+      .pill{display:inline-block;font-size:.8em;color:#94a3b8;border:1px solid #1f2937;border-radius:999px;padding:.15rem .5rem;margin-left:.35rem}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Basics of HTML — Full Tag Reference</h1>
+      <nav aria-label="Sections">
+        <a href="#metadata">Metadata</a>
+        <a href="#semantics">Semantic Layout</a>
+        <a href="#typography">Text & Typography</a>
+        <a href="#links">Links</a>
+        <a href="#lists">Lists</a>
+        <a href="#tables">Tables</a>
+        <a href="#forms">Forms</a>
+        <a href="#media">Media & Embeds</a>
+        <a href="#interactive">Interactive</a>
+        <a href="#web-components">Web Components</a>
+        <a href="#misc">Misc Utility</a>
+        <a href="#deprecated">Deprecated</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- METADATA -->
+      <section id="metadata">
+        <h2>Structural Document & Metadata</h2>
+        <p class="lead">Foundational tags that declare the document type and provide metadata for browsers, crawlers, and tooling. Most live inside <code>&lt;head&gt;</code>.</p>
+
+        <details open>
+          <summary>Core &amp; Head Elements</summary>
+          <ul class="taglist">
+            <li class="tag">
+              <span class="name">&lt;!DOCTYPE&gt;</span>
+              <span class="desc">Declares HTML version to the browser (HTML5). Required at the top of the document.</span>
+              <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
+            </li>
+            <li class="tag">
+              <span class="name">&lt;html&gt;</span>
+              <span class="desc">Root element wrapping the entire document. Use <code>lang</code> and (optionally) <code>dir</code> for accessibility and i18n.</span>
+              <pre><code>&lt;html lang="en"&gt; ... &lt;/html&gt;</code></pre>
+            </li>
+            <li class="tag">
+              <span class="name">&lt;head&gt;</span>
+              <span class="desc">Container for metadata: <code>&lt;title&gt;</code>, <code>&lt;meta&gt;</code>, styles, scripts, and links.</span>
+              <pre><code>&lt;head&gt; ... &lt;/head&gt;</code></pre>
+            </li>
+            <li class="tag">
+              <span class="name">&lt;title&gt;</span>
+              <span class="desc">Document title shown in the browser tab and used by search engines.</span>
+              <pre><code>&lt;title&gt;Basics of HTML&lt;/title&gt;</code></pre>
+            </li>
+            <li class="tag">
+              <span class="name">&lt;base&gt;</span><span class="pill">optional</span>
+              <span class="desc">Sets the base URL and/or default target for all relative links in the page.</span>
+              <pre><code>&lt;base href="https://example.com/" target="_blank"&gt;</code></pre>
+            </li>
+            <li class="tag">
+              <span class="name">&lt;meta&gt;</span>
+              <span class="desc">Encodes metadata (charset, viewport, SEO). Critical for mobile responsiveness and correct encoding.</span>
+              <pre><code>&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;meta name="description" content="all basics of html"&gt;</code></pre>
+            </li>
+            <li class="tag">
+              <span class="name">&lt;link&gt;</span>
+              <span class="desc">Links external resources like CSS, icons, and preconnect hints.</span>
+              <pre><code>&lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;link rel="icon" href="/favicon.ico"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</code></pre>
+            </li>
+            <li class="tag">
+              <span class="name">&lt;style&gt;</span>
+              <span class="desc">Embeds CSS directly in the document head. Prefer external files for large stylesheets.</span>
+              <pre><code>&lt;style&gt; body { font-family: system-ui; } &lt;/style&gt;</code></pre>
+            </li>
+            <li class="tag">
+              <span class="name">&lt;script&gt;</span>
+              <span class="desc">Loads/executes JavaScript. Use <code>defer</code> for scripts that touch the DOM; <code>type="module"</code> for ESM.</span>
+              <pre><code>&lt;script src="app.js" defer&gt;&lt;/script&gt;
+&lt;script type="module"&gt; import init from './main.js'; init(); &lt;/script&gt;</code></pre>
+            </li>
+            <li class="tag">
+              <span class="name">&lt;noscript&gt;</span>
+              <span class="desc">Fallback content for users with JavaScript disabled or blocked.</span>
+              <pre><code>&lt;noscript&gt;Please enable JavaScript for the best experience.&lt;/noscript&gt;</code></pre>
+            </li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- SEMANTIC LAYOUT -->
+      <section id="semantics">
+        <h2>Semantic Layout</h2>
+        <p class="lead">High-level structural elements that improve accessibility, SEO, and maintainability.</p>
+
+        <details open>
+          <summary>Page Sections</summary>
+          <ul class="taglist">
+            <li class="tag"><span class="name">&lt;body&gt;</span><span class="desc">Container for all visible content of the page.</span><pre><code>&lt;body&gt; ... visible content ... &lt;/body&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;header&gt;</span><span class="desc">Introductory content: logo, title, primary nav; can appear within page or within an article/section.</span><pre><code>&lt;header&gt;...site nav...&lt;/header&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;nav&gt;</span><span class="desc">Navigation block containing links to major sections of the site or page.</span><pre><code>&lt;nav&gt;&lt;a href="#media"&gt;Media&lt;/a&gt;&lt;/nav&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;main&gt;</span><span class="desc">Primary content unique to the document. Only one per page.</span><pre><code>&lt;main&gt;...main content...&lt;/main&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;section&gt;</span><span class="desc">Thematically grouped content, typically with a heading.</span><pre><code>&lt;section aria-labelledby="s1"&gt;&lt;h2 id="s1"&gt;Overview&lt;/h2&gt;...&lt;/section&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;article&gt;</span><span class="desc">Self-contained composition (blog post, card, comment) that could stand alone.</span><pre><code>&lt;article&gt;&lt;h3&gt;Post&lt;/h3&gt;&lt;p&gt;...&lt;/p&gt;&lt;/article&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;aside&gt;</span><span class="desc">Tangential or complementary content (sidebars, callouts, ads).</span><pre><code>&lt;aside&gt;Related links&lt;/aside&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;footer&gt;</span><span class="desc">Footer for its nearest sectioning root (page or article). Often contains legal, contacts, or nav.</span><pre><code>&lt;footer&gt;© 2025 Vishal&lt;/footer&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;address&gt;</span><span class="desc">Contact info for a person/organization related to its nearest ancestor <code>&lt;article&gt;</code> or the document.</span><pre><code>&lt;address&gt;Email: hello@example.com&lt;/address&gt;</code></pre></li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- TEXT & TYPOGRAPHY -->
+      <section id="typography">
+        <h2>Text &amp; Typography</h2>
+        <p class="lead">Headings, paragraphs, inline semantics, and editorial emphasis that convey structure and meaning.</p>
+
+        <details open>
+          <summary>Headings &amp; Blocks</summary>
+          <ul class="taglist">
+            <li class="tag"><span class="name">&lt;h1&gt; … &lt;h6&gt;</span><span class="desc">Six levels of headings, from most important (<code>&lt;h1&gt;</code>) to least (<code>&lt;h6&gt;</code>).</span><pre><code>&lt;h1&gt;Main Title&lt;/h1&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;p&gt;</span><span class="desc">Paragraph of text; the most common block element.</span><pre><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;pre&gt;</span><span class="desc">Preformatted text that preserves whitespace and line breaks.</span><pre><code>&lt;pre&gt;line 1
+line 2&lt;/pre&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;blockquote&gt;</span><span class="desc">Extended quotation, optionally with a <code>cite</code> URL.</span><pre><code>&lt;blockquote cite="https://example.com"&gt;Quote&lt;/blockquote&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;hr&gt;</span><span class="desc">Thematic break between paragraphs/sections.</span><pre><code>&lt;hr&gt;</code></pre></li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>Inline Semantics &amp; Edits</summary>
+          <ul class="taglist">
+            <li class="tag"><span class="name">&lt;strong&gt;</span><span class="desc">Strong importance; typically bold. Conveys meaning to assistive tech.</span><pre><code>&lt;strong&gt;Important&lt;/strong&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;em&gt;</span><span class="desc">Emphasis; typically italic. Indicates stress emphasis in speech.</span><pre><code>&lt;em&gt;Emphasized&lt;/em&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;b&gt;</span><span class="desc">Stylistic offset without semantic importance.</span><pre><code>&lt;b&gt;Bold look&lt;/b&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;i&gt;</span><span class="desc">Alternate voice/mood (terms, idioms, thoughts), not emphasis.</span><pre><code>&lt;i&gt;Latin phrase&lt;/i&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;small&gt;</span><span class="desc">Side comments, disclaimers, legal text.</span><pre><code>&lt;small&gt;T&amp;C apply&lt;/small&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;u&gt;</span><span class="desc">Stylized underline (not for links). Avoid for link-like styling.</span><pre><code>&lt;u&gt;Underlined&lt;/u&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;s&gt;</span><span class="desc">Content no longer accurate/relevant (rendered struck through).</span><pre><code>&lt;s&gt;Old price&lt;/s&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;ins&gt;</span><span class="desc">Inserted text (diff/edits). Can carry <code>cite</code> and <code>datetime</code>.</span><pre><code>&lt;ins&gt;Added&lt;/ins&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;del&gt;</span><span class="desc">Deleted text (diff/edits). Can carry <code>cite</code> and <code>datetime</code>.</span><pre><code>&lt;del&gt;Removed&lt;/del&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;sup&gt;</span><span class="desc">Superscript (math/footnotes).</span><pre><code>X&lt;sup&gt;2&lt;/sup&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;sub&gt;</span><span class="desc">Subscript (chemical formulas).</span><pre><code>H&lt;sub&gt;2&lt;/sub&gt;O</code></pre></li>
+            <li class="tag"><span class="name">&lt;br&gt;</span><span class="desc">Line break inside text (use sparingly; prefer CSS for spacing).</span><pre><code>Hello&lt;br&gt;World</code></pre></li>
+            <li class="tag"><span class="name">&lt;wbr&gt;</span><span class="desc">Optional word break opportunity for long tokens/URLs.</span><pre><code>supercalifragilisticexpiali&lt;wbr&gt;docious</code></pre></li>
+            <li class="tag"><span class="name">&lt;span&gt;</span><span class="desc">Generic inline container for styling or scripting hooks.</span><pre><code>&lt;span class="tag"&gt;chip&lt;/span&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;code&gt;</span><span class="desc">Inline code fragment; pair with <code>&lt;pre&gt;</code> for blocks.</span><pre><code>&lt;code&gt;const x=1&lt;/code&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;kbd&gt;</span><span class="desc">User input via keyboard/voice.</span><pre><code>&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;C&lt;/kbd&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;samp&gt;</span><span class="desc">Sample output from a program or system.</span><pre><code>&lt;samp&gt;404 Not Found&lt;/samp&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;var&gt;</span><span class="desc">Variable in a mathematical or programming context.</span><pre><code>&lt;var&gt;x&lt;/var&gt; = 42</code></pre></li>
+            <li class="tag"><span class="name">&lt;mark&gt;</span><span class="desc">Highlight text as if marked with a highlighter pen.</span><pre><code>&lt;mark&gt;search term&lt;/mark&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;abbr&gt;</span><span class="desc">Abbreviation/acronym; use <code>title</code> to expand.</span><pre><code>&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;dfn&gt;</span><span class="desc">Term being defined; often the first occurrence.</span><pre><code>&lt;dfn&gt;API&lt;/dfn&gt; — Application Programming Interface</code></pre></li>
+            <li class="tag"><span class="name">&lt;cite&gt;</span><span class="desc">Reference to a creative work (book, site, paper).</span><pre><code>&lt;cite&gt;MDN Web Docs&lt;/cite&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;q&gt;</span><span class="desc">Inline quotation; user agents may add quotes automatically.</span><pre><code>&lt;q&gt;Short quote&lt;/q&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;time&gt;</span><span class="desc">Machine-readable dates/times using <code>datetime</code>.</span><pre><code>&lt;time datetime="2025-08-24"&gt;Aug 24, 2025&lt;/time&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;ruby&gt;, &lt;rt&gt;, &lt;rp&gt;</span><span class="desc">Ruby annotations for East Asian typography; <code>&lt;rp&gt;</code> adds fallback parentheses.</span><pre><code>&lt;ruby&gt;漢&lt;rt&gt;kan&lt;/rt&gt;&lt;rp&gt;(&lt;/rp&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;data&gt;</span><span class="desc">Associates a human-readable value with a machine-readable one via <code>value</code>.</span><pre><code>&lt;data value="101"&gt;Product #101&lt;/data&gt;</code></pre></li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>Text Direction</summary>
+          <ul class="taglist">
+            <li class="tag"><span class="name">&lt;bdi&gt;</span><span class="desc">Isolates a span of text that might have a different directionality.</span><pre><code>&lt;bdi&gt;علي&lt;/bdi&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;bdo&gt;</span><span class="desc">Overrides the current text direction with <code>dir</code>.</span><pre><code>&lt;bdo dir="rtl"&gt;abc&lt;/bdo&gt;</code></pre></li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- LINKS -->
+      <section id="links">
+        <h2>Links &amp; Anchors</h2>
+        <p class="lead">Create hyperlinks and image maps to navigate within and across documents.</p>
+        <details open>
+          <summary>Anchors &amp; Maps</summary>
+          <ul class="taglist">
+            <li class="tag"><span class="name">&lt;a&gt;</span><span class="desc">Hyperlink to URLs, fragments, downloads, or actions.</span><pre><code>&lt;a href="#forms"&gt;Jump to Forms&lt;/a&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;map&gt; &amp; &lt;area&gt;</span><span class="desc">Clickable regions on images using coordinates.</span><pre><code>&lt;img src="plan.png" usemap="#m"&gt;
+&lt;map name="m"&gt;
+  &lt;area shape="rect" coords="0,0,100,100" href="/A"&gt;
+&lt;/map&gt;</code></pre></li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- LISTS -->
+      <section id="lists">
+        <h2>Lists</h2>
+        <p class="lead">Ordered, unordered, and description lists to group related items.</p>
+        <details open>
+          <summary>List Elements</summary>
+          <ul class="taglist">
+            <li class="tag"><span class="name">&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</span><span class="desc">Unordered and ordered lists with list items.</span><pre><code>&lt;ol&gt;&lt;li&gt;Step 1&lt;/li&gt;&lt;li&gt;Step 2&lt;/li&gt;&lt;/ol&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;</span><span class="desc">Description lists with term and definition pairs.</span><pre><code>&lt;dl&gt;&lt;dt&gt;HTML&lt;/dt&gt;&lt;dd&gt;Markup language&lt;/dd&gt;&lt;/dl&gt;</code></pre></li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- TABLES -->
+      <section id="tables">
+        <h2>Tables</h2>
+        <p class="lead">Represent tabular data with semantic grouping for headers, bodies, and footers.</p>
+        <details open>
+          <summary>Table Elements</summary>
+          <ul class="taglist">
+            <li class="tag"><span class="name">&lt;table&gt;</span><span class="desc">Table container. Use semantic sections for accessibility.</span><pre><code>&lt;table&gt;...&lt;/table&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;caption&gt;</span><span class="desc">Title for the table; improves accessibility.</span><pre><code>&lt;caption&gt;Sales 2025&lt;/caption&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;</span><span class="desc">Semantic grouping of header, body, and footer rows.</span><pre><code>&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Q1&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;tr&gt;, &lt;th&gt;, &lt;td&gt;</span><span class="desc">Rows and header/data cells; set scopes on <code>&lt;th&gt;</code>.</span><pre><code>&lt;tr&gt;&lt;th scope="col"&gt;Name&lt;/th&gt;&lt;td&gt;Vishal&lt;/td&gt;&lt;/tr&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;colgroup&gt;, &lt;col&gt;</span><span class="desc">Define column groups and per-column attributes (e.g., width).</span><pre><code>&lt;colgroup&gt;&lt;col span="2" style="width:50%"&gt;&lt;/colgroup&gt;</code></pre></li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- FORMS -->
+      <section id="forms">
+        <h2>Forms</h2>
+        <p class="lead">Collect, validate, and submit user input with semantic controls and labels.</p>
+        <details open>
+          <summary>Form Elements</summary>
+          <ul class="taglist">
+            <li class="tag"><span class="name">&lt;form&gt;</span><span class="desc">Form container with <code>action</code>/<code>method</code>. Use <code>autocomplete</code> and <code>novalidate</code> as needed.</span><pre><code>&lt;form action="/signup" method="post"&gt;...&lt;/form&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;label&gt;</span><span class="desc">Associates text with a control via <code>for</code> (or by wrapping).</span><pre><code>&lt;label for="email"&gt;Email&lt;/label&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;input&gt;</span><span class="desc">Versatile control: <code>text</code>, <code>email</code>, <code>password</code>, <code>number</code>, <code>date</code>, <code>file</code>, etc.</span><pre><code>&lt;input id="email" type="email" required placeholder="you@example.com"&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;textarea&gt;</span><span class="desc">Multiline text input; use <code>rows</code>/<code>cols</code> or CSS for sizing.</span><pre><code>&lt;textarea rows="3"&gt;&lt;/textarea&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;select&gt;, &lt;option&gt;, &lt;optgroup&gt;</span><span class="desc">Dropdown menus; group related options with labels.</span><pre><code>&lt;select&gt;&lt;optgroup label="A"&gt;&lt;option&gt;Alpha&lt;/option&gt;&lt;/optgroup&gt;&lt;/select&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;button&gt;</span><span class="desc">Clickable button; default type is <code>submit</code> inside forms.</span><pre><code>&lt;button type="button"&gt;Click&lt;/button&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;fieldset&gt; &amp; &lt;legend&gt;</span><span class="desc">Group related controls with a caption for screen readers.</span><pre><code>&lt;fieldset&gt;&lt;legend&gt;Profile&lt;/legend&gt;...&lt;/fieldset&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;datalist&gt;</span><span class="desc">Provides suggested values for an <code>&lt;input list&gt;</code> field (autocomplete).</span><pre><code>&lt;input list="cities"&gt;
+&lt;datalist id="cities"&gt;&lt;option value="Delhi"&gt;&lt;/datalist&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;output&gt;</span><span class="desc">Displays calculation results tied to form controls.</span><pre><code>&lt;output for="a b"&gt;10&lt;/output&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;progress&gt;</span><span class="desc">Indicates task progress with <code>value</code> and <code>max</code>.</span><pre><code>&lt;progress value="30" max="100"&gt;30%&lt;/progress&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;meter&gt;</span><span class="desc">Displays a scalar measurement within a known range.</span><pre><code>&lt;meter value="0.7" min="0" max="1"&gt;70%&lt;/meter&gt;</code></pre></li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- MEDIA & EMBEDS -->
+      <section id="media">
+        <h2>Media &amp; Embeds</h2>
+        <p class="lead">Embed images, audio/video, vector graphics, plugins, and external documents.</p>
+        <details open>
+          <summary>Images &amp; Figures</summary>
+          <ul class="taglist">
+            <li class="tag"><span class="name">&lt;img&gt;</span><span class="desc">Inline bitmap image. Always include <code>alt</code> for accessibility.</span><pre><code>&lt;img src="hero.jpg" alt="Scenic view" loading="lazy"&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;picture&gt; &amp; &lt;source&gt;</span><span class="desc">Art-direction and modern formats via multiple sources with media/type queries.</span><pre><code>&lt;picture&gt;
+  &lt;source srcset="img.avif" type="image/avif"&gt;
+  &lt;img src="img.jpg" alt="..."&gt;
+&lt;/picture&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;figure&gt; &amp; &lt;figcaption&gt;</span><span class="desc">Self-contained media with an accessible caption.</span><pre><code>&lt;figure&gt;&lt;img src="a.jpg" alt="A"&gt;&lt;figcaption&gt;Image A&lt;/figcaption&gt;&lt;/figure&gt;</code></pre></li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>Audio &amp; Video</summary>
+          <ul class="taglist">
+            <li class="tag"><span class="name">&lt;audio&gt; &amp; &lt;video&gt;</span><span class="desc">Built-in media players; combine with <code>&lt;source&gt;</code> and tracks.</span><pre><code>&lt;video controls width="480"&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;track&gt;</span><span class="desc">Timed text tracks for media (subtitles, captions). Use <code>kind</code> and <code>srclang</code>.</span><pre><code>&lt;track kind="subtitles" srclang="en" src="movie.vtt" default&gt;</code></pre></li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>Embeds &amp; Graphics</summary>
+          <ul class="taglist">
+            <li class="tag"><span class="name">&lt;iframe&gt;</span><span class="desc">Embeds another HTML page. Set <code>title</code> and restrictive <code>sandbox</code> for security.</span><pre><code>&lt;iframe src="https://example.com" title="Example" loading="lazy"&gt;&lt;/iframe&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;embed&gt;</span><span class="desc">Embeds external content (PDFs, plugins). Limited control vs <code>&lt;object&gt;</code>.</span><pre><code>&lt;embed src="file.pdf" type="application/pdf"&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;object&gt; &amp; &lt;param&gt;</span><span class="desc">Generic embedded object with parameters for configuration.</span><pre><code>&lt;object data="movie.swf"&gt;
+  &lt;param name="autoplay" value="true"&gt;
+&lt;/object&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;canvas&gt;</span><span class="desc">Scriptable bitmap surface for 2D/3D drawings (via JS or WebGL).</span><pre><code>&lt;canvas id="c" width="300" height="150"&gt;&lt;/canvas&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;svg&gt;</span><span class="desc">Scalable Vector Graphics markup for resolution-independent shapes and icons.</span><pre><code>&lt;svg width="24" height="24" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;/svg&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;math&gt;</span><span class="desc">Embeds MathML for mathematical notation (browser support varies).</span><pre><code>&lt;math&gt;...MathML...&lt;/math&gt;</code></pre></li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- INTERACTIVE -->
+      <section id="interactive">
+        <h2>Interactive Elements</h2>
+        <p class="lead">Built-in interactive widgets that work without JavaScript (but can be enhanced).</p>
+        <details open>
+          <summary>Disclosures &amp; Dialogs</summary>
+          <ul class="taglist">
+            <li class="tag"><span class="name">&lt;details&gt; &amp; &lt;summary&gt;</span><span class="desc">Disclosure widget users can expand/collapse.</span><pre><code>&lt;details&gt;&lt;summary&gt;More&lt;/summary&gt;Hidden text&lt;/details&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;dialog&gt;</span><span class="desc">Native modal/light-dismiss dialog with scripting API.</span><pre><code>&lt;dialog open&gt;Hello&lt;/dialog&gt;</code></pre></li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- WEB COMPONENTS -->
+      <section id="web-components">
+        <h2>Web Components</h2>
+        <p class="lead">Templates and slots for componentizing markup; typically used with Shadow DOM (JS).</p>
+        <details open>
+          <summary>Templating &amp; Slots</summary>
+          <ul class="taglist">
+            <li class="tag"><span class="name">&lt;template&gt;</span><span class="desc">Declarative HTML that is inert until cloned via JS.</span><pre><code>&lt;template id="tpl"&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/template&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;slot&gt;</span><span class="desc">Placeholder inside Shadow DOM where light DOM is projected.</span><pre><code>&lt;slot name="title"&gt;Fallback&lt;/slot&gt;</code></pre></li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- MISC -->
+      <section id="misc">
+        <h2>Misc Utility</h2>
+        <p class="lead">Helpful odds and ends that don’t fit other buckets.</p>
+        <details open>
+          <summary>Odds &amp; Ends</summary>
+          <ul class="taglist">
+            <li class="tag"><span class="name">&lt;address&gt;</span><span class="desc">Contact information related to the nearest <code>&lt;article&gt;</code> or document.</span><pre><code>&lt;address&gt;By Vishal — Mumbai, IN&lt;/address&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;noscript&gt;</span><span class="desc">Displays fallback content if JS is unavailable (listed above in metadata too).</span><pre><code>&lt;noscript&gt;Please enable JS&lt;/noscript&gt;</code></pre></li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- DEPRECATED -->
+      <section id="deprecated">
+        <h2>Deprecated / Obsolete / Non-standard</h2>
+        <p class="lead">Avoid these in modern HTML5. They’re obsolete, replaced by CSS/JS, or never standardized.</p>
+        <details open>
+          <summary>Do Not Use</summary>
+          <ul class="taglist">
+            <li class="tag"><span class="name">&lt;acronym&gt;</span><span class="desc">Deprecated — use &lt;abbr&gt; with a title instead.</span><pre><code>&lt;abbr title="World Health Organization"&gt;WHO&lt;/abbr&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;applet&gt;</span><span class="desc">Deprecated — use &lt;object&gt; or modern web APIs.</span><pre><code>&lt;object data="..."&gt;&lt;/object&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;basefont&gt;, &lt;font&gt;, &lt;big&gt;, &lt;tt&gt;</span><span class="desc">Deprecated — use CSS for styling text.</span><pre><code>&lt;span style="font-size:larger"&gt;...&lt;/span&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;center&gt;</span><span class="desc">Deprecated — center with CSS.</span><pre><code>&lt;div style="text-align:center"&gt;...&lt;/div&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;dir&gt;</span><span class="desc">Deprecated — use &lt;ul&gt;.</span><pre><code>&lt;ul&gt;&lt;li&gt;...&lt;/li&gt;&lt;/ul&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;frame&gt;, &lt;frameset&gt;, &lt;noframes&gt;</span><span class="desc">Deprecated — use &lt;iframe&gt; and CSS layout.</span><pre><code>&lt;iframe src="... "&gt;&lt;/iframe&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;strike&gt;</span><span class="desc">Deprecated — use &lt;s&gt; or &lt;del&gt; depending on meaning.</span><pre><code>&lt;s&gt;Outdated&lt;/s&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;isindex&gt;</span><span class="desc">Deprecated — use proper &lt;form&gt; controls.</span><pre><code>&lt;form&gt;&lt;input type="search"&gt;&lt;/form&gt;</code></pre></li>
+            <li class="tag"><span class="name">&lt;keygen&gt;</span><span class="desc">Deprecated — use Web Crypto / server-side generation.</span><pre><code>// use modern APIs</code></pre></li>
+            <li class="tag"><span class="name">&lt;marquee&gt;</span><span class="desc">Non-standard/obsolete — replicate with CSS animations.</span><pre><code>@keyframes slide{}</code></pre></li>
+            <li class="tag"><span class="name">&lt;xmp&gt;, &lt;plaintext&gt;, &lt;blink&gt;, &lt;spacer&gt;</span><span class="desc">Obsolete/non-standard historical tags.</span><pre><code><!-- no modern equivalent needed --></code></pre></li>
+          </ul>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 Vishal Mishra • Built as an HTML learning sheet</p>
+    </footer>
+  </body>
 </html>
